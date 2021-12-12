@@ -1,7 +1,7 @@
 Q1. Write a the C program to create an array by inserting  N elements in it then find second non repeating element from the array.
 
 Solution==
- #include <stdio.h>
+ #include <stdio.h>                               //all codes are coded by a legend itself😊😊
 #include <stdlib.h>
 
 int sec_non_rep(int arr[],int n)
@@ -95,3 +95,39 @@ return 0;
 }
 
 
+
+Q3. Write a C program Create a  Dynamic array and then Reverse the array  using recursion and then finally print the array.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void reverse(int arr[],int n){       
+    
+    if(n==0){
+        return;
+    }else{
+        printf("%d\n",arr[n-1]);
+        reverse(arr,n-1);                   //excellent use of recursion 
+    }
+}
+
+int main()
+{
+int i=0;
+int n;
+printf("code_by_shivam_dobhal\n\n");
+printf("enter the size of the array : ");
+scanf("%d",&n);
+int *arr;
+arr=(int *)malloc(n*(sizeof(int)));
+printf("enter the elements\n");
+
+for(i=0 ; i<n ;  i++)
+{
+scanf("%d",&arr[i]);
+}
+
+printf("reversed array is : \n");
+reverse(arr,n);
+return 0;
+}
