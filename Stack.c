@@ -1,4 +1,4 @@
-    //stack by array
+    //stack by array  ysing global variables
 #include <stdio.h>
 #include <stdlib.h>
 #define size 6
