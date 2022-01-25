@@ -98,3 +98,10 @@ int display()
     for(i=0;i<=top;i++)
     printf("%d ",stack[i]);
 }
+
+
+
+
+
+
+QUESTION-Stack_implementation_by_array using local variable
