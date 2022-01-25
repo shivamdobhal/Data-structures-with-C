@@ -98,7 +98,7 @@ QUESTION-2] queue  implementation by using linked list [using double pointers ]
 SOLUTION->queue can be implemented  by linked list using two ways->1.insertion from begin and deletion from last 
                                                                    2.insertion from last and deletion from begin 
 => But I am doing  insertion from last and deletion from begin
-#inlcude <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>         //for malloc() function
 
 struct node{
@@ -106,6 +106,71 @@ struct node{
             int data;
            };                                         //insert from rear  & deletion from front
 
+
+
 int insert(struct node **head,int value)
 {
+    struct node *newnode;
+    newnode=(struct node* )malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+      *head = newnode;
+    }
+    else{
+                struct node *ptr=*head;
+                    while(ptr->next!=NULL)
+                    {
+                    ptr=ptr->next;
+                    }   
+        newnode->data=value;
+        newnode->next=NULL;
+        ptr->next= newnode;
+        }
+}
+
+
+
+void delete(struct node **head)
+{
+struct node *ptr=*head;
+        if(*head==NULL)
+        printf("no node to delete");
+else
+    {
+    printf("deleted value is %d\n",(*head)->data);
+    *head=ptr->next;
+    }
+}
+
+
+void display(struct node **head)
+{
+    struct node *ptr;
+    ptr=*head;
+    int i=0;
+        while(ptr!=NULL)
+        {
+            printf(" %d ",ptr->data);
+            ptr=ptr->next;
+        }
+}
+ 
+
+int main()
+ {
+ struct node *head;
+ head=NULL;
+  insert(&head,10);
+  insert(&head,20);
+  insert(&head,30);
+  insert(&head,40);
+  insert(&head,50);
+  delete(&head);
+  delete(&head);
+  display(&head);
+  return 0;
+ }
     
