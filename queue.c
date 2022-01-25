@@ -95,5 +95,17 @@ else if(ch==2)
 
 
 QUESTION-2] queue  implementation by using linked list [using double pointers ] 
-SOLUTION->
+SOLUTION->queue can be implemented  by linked list using two ways->1.insertion from begin and deletion from last 
+                                                                   2.insertion from last and deletion from begin 
+=> But I am doing  insertion from last and deletion from begin
+#inlcude <stdio.h>
+#include <stdlib.h>         //for malloc() function
+
+struct node{
+            struct node *next;
+            int data;
+           };                                         //insert from rear  & deletion from front
+
+int insert(struct node **head,int value)
+{
     
