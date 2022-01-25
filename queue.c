@@ -89,3 +89,11 @@ else if(ch==2)
     }
  return 0;
 }
+
+
+
+
+
+QUESTION-2] queue  implementation by using linked list [using double pointers ] 
+SOLUTION->
+    
