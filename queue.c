@@ -1,6 +1,6 @@
- // Queue by using array and  by local variable
-#include <stdio.h>
-#include <stdlib.h>
+QUESTION-1]Queue by using array and  by local variable
+#include <stdio.h>                              //insertion from front
+#include <stdlib.h>                             //deletion from rear
 #define size 6
 
 int enqueue(int front,int queue[])
@@ -13,7 +13,6 @@ int enqueue(int front,int queue[])
     {
         printf("pushes : ");
         scanf("%d",&x);
-        // stack[++top]=x;
         front++;
         queue[front]=x;
     return front;
