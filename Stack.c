@@ -205,4 +205,92 @@ QUESTION-3] stack implementation using linked list [using local variables and do
 //stack can be implemented using linked list using two ways:-  1.insertion and deletion by end
 //                                                             2.insertion and deletion in beginning
 solution-
+ #include <stdio.h>
+ #include <stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+           };
+
+
+void insert(struct node **head,int value)          //insertion at last/end
+{
+struct node *newnode;
+newnode=(struct node* )malloc(sizeof(struct node));
+
+if(*head==NULL)
+{
+    newnode->data=value;
+    newnode->next=NULL;
+    *head=newnode;
+}
+else
+    {
+    struct node *ptr;                                      //new pointer  created so that the value of the head is not lost
+    ptr=*head;
+
+        while(ptr->next!=NULL)
+       {
+            ptr=ptr->next;
+
+       }
+      newnode->data=value;
+      newnode->next=NULL;
+     ptr->next=newnode;
+   }
+}
+
+
+void delete(struct node **head)                      //deletion from last
+{
+    struct node *temp,*ptr;
+    ptr=*head;
+    if(*head==NULL)
+     {
+       printf("no element to delete");
+    } 
+    else    
+    {
+       while(ptr->next!=NULL)
+    {
+        temp=ptr;
+            ptr=ptr->next;
+
+    }
+printf("deleted value %d\n",ptr->data);
+  temp->next=NULL;
+  
+    }
+}
+
+
+
+void display(struct node **head)
+{
+    struct node *ptr;
+    ptr=*head;
+int i=0;
+while(ptr!=NULL)
+{
+    printf(" %d ",ptr->data);
+    ptr=ptr->next;
+}
     
+}
+ 
+
+int main()
+ {
+ struct node *head;
+ head=NULL;
+  insert(&head,10);
+  insert(&head,20);
+  insert(&head,30);
+  insert(&head,40);
+  insert(&head,50);
+  delete(&head);
+  delete(&head);
+  display(&head);
+  return 0;
+ }
