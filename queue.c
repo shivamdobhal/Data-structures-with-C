@@ -174,3 +174,101 @@ int main()
   return 0;
  }
     
+
+
+
+QUESTION-3]circular  queue  implementation by using  arrays[using local variables ]
+    SOLUTION-
+    #include <stdio.h>
+#include <stdlib.h>
+#define size 4
+int rear=-1;
+int front=-1;
+   void insert(int queue[],int value)
+{
+  
+if(rear==-1 && front==-1)
+{
+    front=rear=0;
+    queue[rear]=value;
+}
+else if(rear==size-1 && front==0)
+{
+    printf("overflow");
+}
+else if(rear==size-1 && front!=0)
+{
+    rear=0;
+    queue[rear]=value;
+}
+else
+{
+    rear++;}
+    queue[rear]=value;
+}
+
+void delete(int queue[])
+{
+if (front ==  - 1)
+    {
+        printf("queue is empty ");
+    }
+else if (front == rear)
+    {
+        printf("\n %d deleted", queue[front]);
+       rear=front=-1;
+    }
+    else
+    {
+        printf("\n %d deleted", queue[front]);
+        front++;
+    }
+}
+
+
+int display(int queue[])
+{
+int i;
+    printf("\n");
+     if(rear==-1 && front ==-1)
+printf("underflow");
+   else  if (front > rear)
+    {
+        for (i = front; i < size; i++)
+        {
+            printf("%d ", queue[i]);
+        }
+        for (i = 0; i <= rear; i++)
+            printf("%d ", queue[i]);
+    }
+    else if(rear>front)
+    {
+        for (i = front; i <= rear; i++)
+            printf("%d ", queue[i]);
+    }
+}
+
+    int main()
+{
+ int queue[size];
+
+  while(1)
+    {
+        int ch;
+        printf("enter your choice:  ");
+        scanf("%d",&ch);
+if(ch==1)
+ {
+    int value;
+    printf("enter the value to be inserted ");
+    scanf("%d",&value);
+        insert(queue,value);
+ }
+else if(ch==2)
+       delete(queue);
+ else if(ch==3)
+        display(queue); 
+} 
+ return 0;
+}
+
