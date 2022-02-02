@@ -94,6 +94,12 @@ else if(ch==2)
 
 
 
+
+
+
+
+
+
 QUESTION-2] queue  implementation by using linked list [using double pointers ] 
 SOLUTION->queue can be implemented  by linked list using two ways->1.insertion from begin and deletion from last 
                                                                    2.insertion from last and deletion from begin 
@@ -177,7 +183,17 @@ int main()
 
 
 
-QUESTION-3]circular  queue  implementation by using  arrays[using local variables ]
+
+
+
+
+
+
+
+
+
+
+QUESTION-3]circular  queue  implementation by using  arrays[using global variables ]
     SOLUTION-
 #include <stdio.h>
 #include <stdlib.h>
@@ -186,7 +202,7 @@ int rear=-1;
 int front=-1;
 
 
-   void insert(int queue[],int value)  //insertion has 4 condition in circular queue
+   void insert(int queue[],int value)                                               //insertion has 4 condition in circular queue
 {
   
 if(rear==-1 && front==-1)
@@ -212,7 +228,7 @@ else
 
 
 
-void delete(int queue[])  //deletion has 2 condition----1]underflow   2] when front==rear    3]when front!=rear
+void delete(int queue[])                                                      //deletion has 2 condition----1]underflow   2] when front==rear    3]when front!=rear
 {
 if (front ==  - 1)
     {
@@ -231,7 +247,7 @@ else
 }
 
 
-int display(int queue[])     //display has 3 condition ------1]underflow   2] when  rear>front  3] when  front>rear
+int display(int queue[])                                                //display has 3 condition ------1]underflow   2] when  rear>front  3] when  front>rear
 {
 int i;
     printf("\n");
