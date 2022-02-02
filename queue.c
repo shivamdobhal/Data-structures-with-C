@@ -179,12 +179,14 @@ int main()
 
 QUESTION-3]circular  queue  implementation by using  arrays[using local variables ]
     SOLUTION-
-    #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #define size 4
 int rear=-1;
 int front=-1;
-   void insert(int queue[],int value)
+
+
+   void insert(int queue[],int value)  //insertion has 4 condition in circular queue
 {
   
 if(rear==-1 && front==-1)
@@ -207,7 +209,10 @@ else
     queue[rear]=value;
 }
 
-void delete(int queue[])
+
+
+
+void delete(int queue[])  //deletion has 2 condition----1]underflow   2] when front==rear    3]when front!=rear
 {
 if (front ==  - 1)
     {
@@ -218,7 +223,7 @@ else if (front == rear)
         printf("\n %d deleted", queue[front]);
        rear=front=-1;
     }
-    else
+else
     {
         printf("\n %d deleted", queue[front]);
         front++;
@@ -226,7 +231,7 @@ else if (front == rear)
 }
 
 
-int display(int queue[])
+int display(int queue[])     //display has 3 condition ------1]underflow   2] when  rear>front  3] when  front>rear
 {
 int i;
     printf("\n");
