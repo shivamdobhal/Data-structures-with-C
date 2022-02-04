@@ -293,3 +293,117 @@ else if(ch==2)
  return 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+QUESTION-4]Priority  queue  implementation by using  linked list[using local variables and double pointers ]
+SOLUTION]
+//priority queue using linked list
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int data;
+    int priority;
+    struct node *next;
+            };
+
+int insert(struct node **head,int value,int p)
+{
+    struct node *newnode;
+    newnode=(struct node *)malloc(sizeof(struct node));
+    struct node *ptr;
+    ptr=*head;
+         newnode->data=value;
+         newnode->priority=p;
+    if(*head==NULL)    //when no node present
+    {
+        newnode->next=NULL;
+         *head=newnode;   
+    }
+
+
+    else if((*head)->priority>p)              //insertion at front
+    {
+            newnode->next=*head;
+           *head=newnode;
+    }
+
+    else
+    {                          //insert at end and middle 
+          while(ptr->next!=NULL && ptr->next->priority<=p)             //most important step
+          {
+              ptr=ptr->next;
+          }
+          newnode->next=ptr->next;
+          ptr->next=newnode;
+
+    }
+}
+
+
+
+
+int delete(struct node **head)
+{
+    struct node *temp=*head;
+    if(*head==NULL)
+    printf("no elemnt to delete ");
+    else
+    {
+        printf("deleted element would be %d",temp->data);
+        *head=temp->next;
+    }
+}
+
+
+
+void  display(struct node **head)
+{
+    struct node *ptr=*head;
+    while(ptr!=NULL)
+    {
+    printf("\n %d ",ptr->data);
+    ptr=ptr->next;
+    }
+
+}
+
+int main()
+{
+    struct node *head=NULL;
+    int value,p;
+    int ch;
+    while(1)
+    {
+        printf("\nenter your chioce ");
+        scanf("%d",&ch);
+
+        if(ch==1)
+        {
+            printf("enter the element to be inserted ");
+                scanf("%d",&value);
+            printf("\nenter the priority of the newnode :");
+                scanf("%d",&p);
+
+        insert(&head,value,p);
+        }
+
+        else if(ch==2)
+        {
+            delete(&head);
+        }
+        else if(ch==3)
+        {
+            display(&head);
+        }
+    }
+    return 0;
+}
