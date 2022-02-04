@@ -407,3 +407,133 @@ int main()
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+QUESTION-5]double ended queue  implementation by using  linked list[using local variables and double pointers ]
+    SOLUTION==
+    //double ended queue using linked list 
+    //it is input restricted queue where insertion takes place from one end and deletion from two ends
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int data;
+    struct node *next;
+        };
+
+int insert_begin(struct node **head,int value)
+{
+    struct node *newnode;
+    newnode=(struct node *)malloc(sizeof(struct node));
+    if(*head==NULL)    //when no node present
+    {
+         newnode->data=value;
+        newnode->next=NULL;
+        *head=newnode;   
+    }
+    else    
+    {
+             newnode->data=value;
+            newnode->next=*head;
+           *head=newnode;
+    }   
+}
+
+
+
+
+int delete_begin(struct node **head)
+{
+    struct node *temp=*head;
+    if(*head==NULL)
+    printf("no elemnt to delete ");
+    else
+    {
+        printf("deleted element would be %d",temp->data);
+        *head=temp->next;
+    }
+}
+
+
+
+
+void delete_end(struct node **head)
+{
+    struct node *ptr,*temp;
+    ptr=*head;
+    while(ptr->next!=NULL)
+    {
+        temp=ptr;
+        ptr=ptr->next;
+    }
+    printf("deleted element  == %d",ptr->data);
+    temp->next=NULL;
+}
+
+
+void  display(struct node **head)
+{
+    struct node *ptr=*head;
+    while(ptr!=NULL)
+    {  
+    printf("\n %d ",ptr->data);
+      ptr=ptr->next;
+    }
+}
+
+int main()
+{
+    struct node *head=NULL;
+    int value;
+    int ch;
+    while(1)
+    {
+        printf("\nenter your chioce ");
+        scanf("%d",&ch);
+
+            if(ch==1)
+            {
+                printf("enter the element to be inserted ");
+                scanf("%d",&value);
+
+                  insert_begin(&head,value);
+            }
+
+           else if(ch==2)
+            {
+                delete_begin(&head);
+            }
+           else if(ch==3)
+            {
+                delete_end(&head);
+            }
+           else if(ch==4)
+            {
+                display(&head);
+            }
+    }
+    return 0;
+}
