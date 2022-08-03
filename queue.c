@@ -306,7 +306,7 @@ else if(ch==2)
 
 QUESTION-4]Priority  queue  implementation by using  linked list[using local variables and double pointers ]
 SOLUTION]
-//priority queue using linked list
+//priority queue using linked list                                         //push=0(n)   peek=0(1)    pop=0(1)
 #include <stdio.h>
 #include <stdlib.h>
 struct node {
