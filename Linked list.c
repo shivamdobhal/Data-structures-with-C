@@ -566,3 +566,317 @@ int main(){
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+Question_3} Implement doubly linked list using double pointers and call by address. {by local variables}
+SOLUTION-
+
+#include <iostream>
+using namespace std;
+
+struct node {
+    struct node *previous;
+    int data;
+    struct node *next;
+            };
+
+
+void insert_begin(struct node **head,int value)
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        newnode->previous=NULL;
+        *head=newnode;
+    }
+    else
+    {
+        newnode->data=value;
+        newnode->previous=NULL;
+        newnode->next=*head;
+        (*head)->previous=newnode;
+        *head=newnode;
+    }
+}
+
+
+
+
+
+
+void insert_end(struct node **head,int value)
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        newnode->previous=NULL;
+        *head=newnode;
+    }
+    else
+    { 
+     struct node *ptr;
+     ptr=*head;
+                         while(ptr->next!=NULL)
+                        {
+                                    ptr=ptr->next;
+                        }
+      newnode->data=value;
+      newnode->next=NULL;
+      newnode->previous=ptr;
+      ptr->next=newnode;
+    }   
+}
+
+
+
+
+
+void insert_before(struct node **head,int value,int key)
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        newnode->previous=NULL;
+        *head=newnode;
+    }
+    else
+    { 
+         struct node *ptr;
+         ptr=*head;
+            while(ptr->data!=key)
+            {   
+                  ptr=ptr->next;
+            }
+        newnode->data=value;
+        newnode->next=ptr;
+        newnode->previous=ptr->previous;
+        ptr->previous->next=newnode;
+        ptr->previous=newnode;
+    } 
+}
+
+
+
+
+
+
+
+void insert_after(struct node **head,int value,int key)
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        newnode->previous=NULL;
+        *head=newnode;
+    }
+    else
+    { 
+         struct node *ptr;
+        ptr=*head;
+            while(ptr->data!=key)
+            {
+                ptr=ptr->next;
+            }
+        newnode->data=value;
+        newnode->next=ptr->next;
+        newnode->previous=ptr;
+        ptr->next=newnode;
+        ptr->next->previous=newnode;
+    }         
+}
+
+
+
+
+
+
+
+void delete_begin(struct node **head)
+{
+    if(*head==NULL)
+    {
+        cout<<"underflow(no node to delete)";
+    }
+    else
+    {
+       cout<<"deleted :"<<(*head)->data;
+       (*head)=(*head)->next;
+       (*head)->previous=NULL;
+    }
+}
+
+
+
+
+
+
+
+void delete_end(struct node **head)
+{
+    if(*head==NULL)
+    {
+        cout<<"underflow(no node to delete)";
+    }
+    else
+    {
+        struct node *ptr=*head;
+        while(ptr->next!=NULL)
+        {
+            ptr=ptr->next;
+        }
+        cout<<"deleted :"<<ptr->data;
+        ptr->previous->next=NULL; 
+    }
+}
+
+
+
+
+void search_and_delete(struct node **head,int key)
+{
+  if(*head==NULL)
+    {
+        cout<<"underflow(no node to delete)";
+    }
+ else
+ {
+  struct node *ptr=*head;
+              while(ptr->data!=key)
+              {
+                    ptr=ptr->next;
+               }
+
+   cout<<"deleted"<<ptr->data;
+   ptr->previous->next=ptr->next;
+   ptr->next->previous=ptr->previous;
+ }     
+}
+
+
+
+
+
+void display(struct node **head)
+{
+    struct node *ptr;
+    ptr=*head;
+      while(ptr!=NULL)
+      {
+         cout<<" "<<ptr->data;
+         ptr=ptr->next;
+      }
+}
+
+
+
+int main()
+{    
+    struct node *head;
+    head=NULL;
+    int ch;
+    int x;
+    int key;
+    while(1)
+    {
+        cout<<"1.insert at beginning   2.insert at end    3.insert before"<<endl;
+        cout<<"4.insert after   5.delete begin   6.delete end"<<endl;
+        cout<<"7.search and delete   8. display"<<endl; 
+        cout<<"enter your choice :";
+        cin>>ch;
+
+        if (ch==1)
+        {
+            
+            cout<<"enter the value to be inserted :";
+            cin>>x;
+            insert_begin(&head,x);
+         
+        }
+
+
+
+        if (ch==2)
+        {
+            
+            cout<<"enter the value to be inserted :";
+            cin>>x;
+            insert_end(&head,x);
+          
+        }
+
+        if (ch==3)
+        {
+          
+            cout<<"enter the key before which you want to insert";
+            cin>>key;
+            cout<<"enter the value to be inserted ";
+            cin>>x;
+            insert_before(&head,x,key);
+            
+        }
+
+        if (ch==4)
+        {
+          
+            cout<<"enter the key after which you want to insert";
+            cin>>key;
+            cout<<"enter the value to be inserted ";
+            cin>>x;
+            insert_after(&head,x,key);
+          
+        }
+
+         if (ch==5)
+        {
+            
+            delete_begin(&head);
+            
+        }
+
+
+         if (ch==6)
+        {
+            
+            delete_end(&head);
+            
+        }
+
+         if(ch==7)
+         {
+            cout<<"enter the key";
+            cin>>key;
+            search_and_delete(&head,key);
+         }
+
+        if(ch==8)
+        {
+            display(&head);
+        } 
+
+    }
+    return 0;
+}
+       
