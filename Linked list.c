@@ -768,7 +768,11 @@ void search_and_delete(struct node **head,int key)
               {
                     ptr=ptr->next;
                }
-
+             
+  if(ptr->data==key)
+ {
+    cout<<"key found and deleted successfully"<<endl;
+ }
    cout<<"deleted"<<ptr->data;
    ptr->previous->next=ptr->next;
    ptr->next->previous=ptr->previous;
