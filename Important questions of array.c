@@ -33,7 +33,6 @@ int main()
 {
 int i=0,n=8;
 int aray[n];
-printf("shivamdobhal_20011851_C\n");
 printf("enter the elements of the array\n");
 for(i=0;i<n;i++)
 {
