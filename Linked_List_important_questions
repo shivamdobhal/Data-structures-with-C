@@ -2,13 +2,17 @@ QUESTION / PROBLEM STATEMENT 1]-------------------------------------------------
                                ---------------------------------------------------b)-detect loop in linked list
                                ---------------------------------------------------c)-find beginning/ starting point of loop
                                ---------------------------------------------------d)- delete the loop
+SOLUTION----Detecting loop using floyd loop detection algorithm.Floyd’s Cycle Detection algorithm is a two-pointer algorithm that is used to determine
+             whether a loop exists or not in a given linked list. If a loop exists then using this algorithm we can also find out at which node the loop begins.
+               time complexity=o(n)    space complexity=o(1)
+
 #include <iostream>
 using namespace std;
 
 struct node {
     int data;
     struct node *next;
-};
+    };
 
 
 
@@ -39,7 +43,8 @@ void insert(struct node **head,int value)
 }
 
 
-
+ 
+ 
 
 //creating loop/cycle in linked list
 void create_loop(struct node **head,int key)
@@ -62,16 +67,20 @@ struct node *temp;
 }
 
 
+
+
+
+
 //detect cycle using floyd cycle detection algo
 struct node* detect_loop(struct node **head)
 {
-struct node *slow_ptr=*head;
-struct node *fast_ptr=*head;
+struct node *slow_ptr=*head;                              //slow pointer takes 1 step
+struct node *fast_ptr=*head;                              //fast pointer takes 2 steps  
 while(fast_ptr!=NULL && slow_ptr!=NULL && fast_ptr->next!=NULL)
 {
     slow_ptr=slow_ptr->next;
     fast_ptr=fast_ptr->next->next;
-         if(slow_ptr==fast_ptr)
+         if(slow_ptr==fast_ptr)                   //if slow pointer is equal to fast pointer then it means that a loop/cycle is present
          {
                      // cout<<"loop/cycle present"<<endl;
             return slow_ptr;
@@ -102,6 +111,8 @@ return start;
 
 
 
+
+
 struct node* delete_loop(struct node **head)
 {
 struct node *ptr=detect_loop(head);
@@ -115,6 +126,10 @@ ptr->next=NULL;
 cout<<"loop/cycle deleted"<<endl;
 }
 
+
+
+
+
 void display(struct node **head)
 {
 struct node *ptr=*head;
@@ -126,6 +141,10 @@ while(ptr!=NULL)
 cout<<endl;
 
 }
+
+
+
+
 
 int main(){
     
