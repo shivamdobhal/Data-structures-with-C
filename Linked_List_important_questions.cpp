@@ -197,3 +197,161 @@ int main(){
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+QUESTION 2} FIND AND RETRIEVE THE MIDDLE ELEMENT FROM THE LINKED LIST.
+  
+  SOLUTION = we can find middle element by two methods --1.by using two pointers
+                                                         2.by finding the length and then iterate to the middle
+                                                         
+            1.in two pointer method one pointer is slow pointer and one pointer is fast pointer.slow pointer takes one step and 
+                 slow pointer takes two steps till fast_ptr doesnot reach to NULL.
+                               then return the slow_ptr->data(i.e,middle element)
+  
+          if elements are odd-----middle is=mid
+          if elements are even-----middle is=mid+1
+ 
+            
+            
+            
+#include <iostream>
+using namespace std;
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+
+void insert(struct node **head,int value)                     //from end
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        *head=newnode;
+    }
+    else
+    {
+         newnode->data=value;
+         struct node *ptr=*head;
+         while(ptr->next!=NULL)
+         {
+            ptr=ptr->next;
+         }
+         ptr->next=newnode;
+         newnode->next=NULL;
+    }    
+}
+
+
+
+void find_middle(struct node **head)
+{
+	if(*head==NULL)
+	{
+		cout<<"underflow";
+	}
+    
+   else{
+		      struct node *ptr=*head;
+		      struct node *temp=*head;
+              int a=0;              //a gives us the correct length of linked list
+
+		              while(ptr!=NULL)
+		              {
+			                  ptr=ptr->next;	
+                        a++;	     //for calculating length
+                  }    
+cout<<"length = "<<a<<endl;  
+     
+int mid=a/2;
+     
+                while(mid!=0)    //traverse till mid doesnot become 0
+                {
+                temp=temp->next;
+                 mid--;
+                }
+cout<<"middle element is -->"<<temp->data<<endl;
+}
+}
+
+
+void two_pointer_method(struct node** head)
+{
+    struct node *slow_ptr=*head;
+    struct node *fast_ptr=*head;
+    while(fast_ptr!=NULL && fast_ptr->next!=NULL)
+    {
+        slow_ptr=slow_ptr->next;
+        fast_ptr=fast_ptr->next->next;
+
+    }
+    cout<<"middle is "<<slow_ptr->data;
+}
+
+
+
+
+void display(struct node **head)
+{
+struct node *ptr=*head;
+while(ptr!=NULL)
+{
+    cout<<" "<<ptr->data;
+    ptr=ptr->next;
+}
+cout<<endl;
+
+}
+
+
+
+
+int main()
+{
+struct node *head;
+head=NULL;
+int x,ch;
+
+    while(1)
+    {
+        cout<<"enter ch :";
+        cin>>ch;
+
+          if(ch==1)
+          {
+	            cin>>x;
+            	insert(&head,x);
+          }
+
+          if (ch==2)
+          {
+	            find_middle(&head);
+          }
+
+
+          if (ch==3)
+          {
+	            find_middle(&head);
+          }
+
+          if (ch==4)
+          {
+	            display(&head);
+          }
+}
+    return 0;
+}           
