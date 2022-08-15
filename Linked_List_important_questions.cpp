@@ -345,7 +345,7 @@ int x,ch;
 
           if (ch==3)
           {
-	            find_middle(&head);
+	            two_pointer_method(&head);
           }
 
           if (ch==4)
