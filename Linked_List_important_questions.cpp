@@ -355,3 +355,68 @@ int x,ch;
 }
     return 0;
 }           
+
+
+
+
+
+
+
+
+
+QUESTION-3]Flattening a Linked List
+          Given a Linked List of size N, where every node represents a sub-linked-list and contains two pointers:
+(i) a next pointer to the next node,
+(ii) a bottom pointer to a linked list where this node is head.
+Each of the sub-linked-list is in sorted order.
+Flatten the Link List such that all the nodes appear in a single level while maintaining the sorted order.
+	
+SOLUTION-use of recursion and merge sort
+
+/* Node structure  used in the program
+struct Node{
+	int data;
+	struct Node * next;
+	struct Node * bottom;
+	
+	Node(int x){
+	    data = x;
+	    next = NULL;
+	    bottom = NULL;
+	}
+};
+*/
+
+Node *merge(Node *num1,Node *num2)                           //merge sort
+{
+    if(num1==NULL) return num2;
+    if(num2==NULL) return num1;
+    
+    Node  *result;
+    if(num1->data<num2->data)
+    {
+        result=num1;
+        result->bottom=merge(num1->bottom,num2);
+    }
+    else                       // if(num1->data>num2->data)
+    {  
+        result=num2;
+        result->bottom=merge(num1,num2->bottom);
+    }
+    result->next==NULL;
+    return result;
+} 
+
+
+Node *flatten(Node *root)                          //root represents head 
+{
+if(root==NULL or root->next==NULL)
+{
+    return root;
+}
+else
+{
+    return merge(root,flatten(root->next));
+}
+}
+
