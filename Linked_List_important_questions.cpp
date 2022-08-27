@@ -364,6 +364,9 @@ int x,ch;
 
 
 
+
+
+
 QUESTION-3]Flattening a Linked List
           Given a Linked List of size N, where every node represents a sub-linked-list and contains two pointers:
 (i) a next pointer to the next node,
@@ -395,7 +398,9 @@ Node *merge(Node *num1,Node *num2)                           //merge sort
     Node  *result;
     if(num1->data<num2->data)
     {
-        result=num1;
+      
+      
+      result=num1;
         result->bottom=merge(num1->bottom,num2);
     }
     else                       // if(num1->data>num2->data)
@@ -416,7 +421,9 @@ if(root==NULL or root->next==NULL)
 }
 else
 {
-    return merge(root,flatten(root->next));
+    return merge(root,flatten(root->next));        //formation of stack in this step  
+                                  //merge(root,root->next)   merge(root,root->next->next)  merge(root,root->next->next->next)   merge(root,root->next->next->next)
+	                        //till root doesnot reaches to null then backtracking takes place in recursion
 }
 }
 
