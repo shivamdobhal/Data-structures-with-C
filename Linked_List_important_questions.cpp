@@ -468,3 +468,156 @@ Node *removeDuplicates(Node *head)
  }
  return head;
 }
+
+
+
+
+
+
+QUESTION-5]reverse the linked list 
+solve== time complexity=O(n)   space complexity=O(1)
+     ==can be done iteratively and recursively
+     
+ #include <iostream>
+using namespace std;
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+
+void insert(struct node **head,int value)                     //from end
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+
+    if(*head==NULL)
+    {
+        newnode->data=value;
+        newnode->next=NULL;
+        *head=newnode;
+    }
+    else
+    {
+         newnode->data=value;
+         struct node *ptr=*head;
+         while(ptr->next!=NULL)
+         {
+            ptr=ptr->next;
+         }
+         ptr->next=newnode;
+         newnode->next=NULL;
+    }    
+}
+
+
+
+struct node *reverse_by_iteration(struct node **head)
+{
+ struct node *curr=*head;    
+ struct node *prev=NULL;
+ struct node *res=NULL;
+
+
+ while(curr!=NULL)
+ {
+    res=curr->next;              //res pointer stored the value of current so that its value does not lost
+    curr->next=prev;              // Move pointers one position ahead.
+    prev=curr;
+    curr=res;
+ }
+ *head=prev;
+ return *head;
+}
+
+// struct node *reverse_by_recursion(struct node **head)
+// {
+
+// if(*head==NULL || (*head)->next==NULL)
+//  return *head;
+
+//  struct node *ptr=reverse_by_recursion(*(head)->next);
+//  struct node *new=(*head)->next;
+//  ptr->next=*head;
+//  (*head)->next=NULL;
+//  *head=ptr;
+//  return *head;
+
+
+// }
+
+
+
+
+void display(struct node **head)
+{
+struct node *ptr=*head;
+while(ptr!=NULL)
+{
+    cout<<" "<<ptr->data;
+    ptr=ptr->next;
+}
+cout<<endl;
+
+}
+
+
+
+
+int main()
+{
+struct node *head;
+head=NULL;
+int x,ch;
+
+    while(1)
+    {
+        cout<<"enter ch :";
+        cin>>ch;
+
+          if(ch==1)
+          {
+	            cin>>x;
+            	insert(&head,x);
+          }
+
+          if (ch==2)
+          {
+	            reverse_by_iteration(&head);
+          }
+
+
+//           if (ch==3)
+//           {
+// 	            reverse_by_recursion(&head);
+//           }
+
+          if (ch==4)
+          {
+	            display(&head);
+          }
+}
+    return 0;
+}           
+
+
+
+
+
+
+QUESTION-6]Why Quick Sort preferred for Arrays and Merge Sort for Linked Lists?
+ANSWER----
+	                           Why is Quick Sort preferred for arrays?
+1]Quick Sort in its general form is an in-place sort (i.e. it doesn’t require any extra storage) whereas merge sort requires O(N) extra storage, N denoting the array size which may be quite expensive. Allocating and de-allocating the extra space used for merge sort increases the running time of the algorithm.
+2]Comparing average complexity we find that both type of sorts have O(NlogN) average complexity but the constants differ. For arrays, merge sort loses due to the use of extra O(N) storage space.
+3]Quick Sort is also a cache friendly sorting algorithm as it has good locality of reference when used for arrays.
+4]Quick Sort is also tail recursive, therefore tail call optimizations is done.
+	
+	
+                                 Why is Merge Sort preferred for Linked Lists?
+
+1]In case of linked lists the case is different mainly due to difference in memory allocation of arrays and linked lists. Unlike arrays, linked list nodes may not be adjacent in memory.
+2]Unlike array, in linked list, we can insert items in the middle in O(1) extra space and O(1) time if we are given reference/pointer to the previous node. Therefore merge operation of merge sort can be implemented without extra space for linked lists.
+3]In arrays, we can do random access as elements are continuous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked list.
+4]Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have continuous block of memory. Therefore, the overhead increases for quick sort. Merge sort accesses data sequentially and the need of random access is low.
