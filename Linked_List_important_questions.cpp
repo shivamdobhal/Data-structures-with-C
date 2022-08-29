@@ -621,3 +621,57 @@ ANSWER----
 2]Unlike array, in linked list, we can insert items in the middle in O(1) extra space and O(1) time if we are given reference/pointer to the previous node. Therefore merge operation of merge sort can be implemented without extra space for linked lists.
 3]In arrays, we can do random access as elements are continuous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked list.
 4]Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have continuous block of memory. Therefore, the overhead increases for quick sort. Merge sort accesses data sequentially and the need of random access is low.
+
+	
+	
+	
+	
+	
+	
+PROBLEM STATEMENT 7} Check whether the given linked list is  in palindrome order or not.if it is in palindrome then return true else false
+SOLUTION---------------------------------Here i am doing this by using stack  	
+        ---------------------------------time complexity = O(n)+O(m) { due to two seperate while loop}
+       ----------------------------------space complexity =o(n)    { as we have use extra space for stack}
+       ---------------------------------steps=
+	       				      1.push the stack with all elements till end
+                                              2.pop() elements again while traversing the list
+					      3.if stack is empty then return true else false
+CODE================/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        stack <int> s;
+        ListNode  *ptr=head;
+            while(ptr!=NULL)
+            {
+                    s.push(ptr->val);
+                    ptr=ptr->next;
+            }
+	    
+         ListNode *temp=head;
+            
+	    while(temp!=NULL)
+            {
+                    if(temp->val==s.top())
+                            s.pop();
+                    temp=temp->next;
+                     
+            }
+  
+	    if(s.empty())
+                    return true;
+            else
+                    return false;
+            
+    }
+};	       
+
