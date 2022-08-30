@@ -21,16 +21,17 @@
       
         for(int i=0;i<size-1;i++)                                      
            {  min = arr[i];
-              for(int j=i;j<size;j++)
+	      position=i;                         //important step
+              for(int j=i+1;j<size;j++)
               {     
 	      	       if(arr[j]<min)                    // FINDING MIN
                  {
-                    min=arr[j];
+                            min=arr[j];
   		            position=j;
  		          }
                }
                	temp=arr[i];		                   //SWAPPING
-		        arr[i]=min;                             //SWAPPING
+		        arr[i]=arr[position];                             //SWAPPING
 		       arr[position]=temp;                      //SWAPPING
             }
    
@@ -61,16 +62,17 @@ int main(){
         
         for(int i=0;i<size-1;i++)
            {  min = arr[i];
+	     position=i;
               for(int j=i;j<size;j++)
               {     
 		       if(arr[j]<min)
                  {
-                    min=arr[j];
+                            min=arr[j];
   		            position=j;
  		          }
                }
-               	temp=arr[i];		
-		        arr[i]=min;
+                	temp=arr[i];		
+		        arr[i]=arr[position];
 		       arr[position]=temp;
             }
    
@@ -88,6 +90,55 @@ int main(){
 
 
 
+
+
+2.Bubble sort--------------------------------------------------------------------------------------------------------------------------------
+=>repeatedly swap two adjacent elements if they are in wrong order
+     
+-------------------------------------------------------------------------IN JAVA----------------------------------------------------------------------- 
+import java.util.Scanner;
+class bubble{
+	public static void main(String args[])
+	{
+		int temp;
+		int size;
+		System.out.print("enter the size of the array :");
+		Scanner sc=new Scanner(System.in);
+		size=sc.nextInt();
+		int arr[]=new int[size];
+	             for(int i=0;i<size;i++)
+        {	
+			     arr[i]=sc.nextInt();
+		     }
+		
+		for(int i=size-1;i>=1;i--)
+        {
+			for(int j=0;j<=i;j++)
+        {
+	                    if(arr[
+	
+	
+	cout<<"After selection sort: ";     
+        for(int i=0;i<size;i++)
+        {
+           System.out.print(" "+arr[i];
+        }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
