@@ -174,7 +174,51 @@ int main(){
 
 
 3.insertion sort--------------------------------------------------------------------------------------------------------------------------------------------------
-=>
+=>better then bubble and selection sort.
+=>example-shuffling of cards.
+=>in this, compares with previous element and put the element in right position	
+ -----------------------------------------------------------------------c++ solution-----------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+int main(){   
+ int size,temp,x;
+          cout<<"enter the size of the array : ";
+           cin>>size;
+          int arr[size]; 
+         for(int i=0;i<size;i++)
+           {
+              cin>>arr[i];
+           }
+        
+        for(int i=1;i<=size-1;i++)
+       	 {
+               x=arr[i];
+               temp=i;
+		    while(temp>0 && arr[temp-1]>x)
+       		    {
+	             
+			 arr[temp]=arr[temp-1];
+		         temp--;
+		    }			    
+			 arr[temp]=x; 
+	}
+		
+   
+    cout<<"After Insertion sort: ";     
+        for(int i=0;i<size;i++)
+        {
+           cout<<" "<<arr[i];
+        }
+
+    return 0;
+}
+          
+
+
+
+
+4.QUICK SORT--------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
 
 
 	
