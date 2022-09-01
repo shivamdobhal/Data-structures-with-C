@@ -92,12 +92,12 @@ int main(){
 
 
 
-2.Bubble sort--------------------------------------------------------------------------------------------------------------------------------
-=>repeatedly swap two adjacent elements if they are in wrong order
-     
+2. Optimised Bubble sort--------------------------------------------------------------------------------------------------------------------------------
+=>repeatedly swap two adjacent elements if they are in wrong order  
 -------------------------------------------------------------------------IN JAVA----------------------------------------------------------------------- 
 import java.util.Scanner;
-class bubble{
+public class bubble {
+    
 	public static void main(String args[])
 	{
 		int temp;
@@ -107,31 +107,76 @@ class bubble{
 		size=sc.nextInt();
 		int arr[]=new int[size];
 	             for(int i=0;i<size;i++)
-        {	
+       		     {	
 			     arr[i]=sc.nextInt();
 		     }
 		
-		for(int i=size-1;i>=1;i--)
-        {
-			for(int j=0;j<=i;j++)
-        {
-	                    if(arr[
+		for(int i=size-1;i>=1;i--)   //optimised form--- the loop will run from size-1 and decremented in every iteration
+       		 {
+			for(int j=0;j<i;j++)
+       			 {
+	                    if(arr[j]>arr[j+1])                //if found minimum then swap
+			    {
+	                        temp=arr[j];
+				 arr[j]=arr[j+1];
+				    arr[j+1]=temp;
+			    }			    		    
+			}
+		}
+		System.out.print("After Bubble sort: ");     
+       			 for(int i=0;i<size;i++)
+        		{
+           			System.out.print(" "+arr[i]);
+        		}
+	}
+}
 	
 	
-	cout<<"After selection sort: ";     
+	
+ -------------------------------------------------------------------------IN C++-----------------------------------------------------------------------------------
+	
+	#include <iostream>
+using namespace std;
+
+int main(){
+    
+ int size,temp;
+          cout<<"enter the size of the array : ";
+           cin>>size;
+          int arr[size]; 
+         for(int i=0;i<size;i++)
+           {
+              cin>>arr[i];
+           }
+        
+        for(int i=size-1;i>=1;i--)
+       		 {
+			for(int j=0;j<i;j++)
+       			 {
+	                    if(arr[j]>arr[j+1])
+			    {
+	                        temp=arr[j];
+				 arr[j]=arr[j+1];
+				    arr[j+1]=temp;
+			    }			    				    
+			}
+		}
+   
+    cout<<"After Bubble sort: ";     
         for(int i=0;i<size;i++)
         {
-           System.out.print(" "+arr[i];
+           cout<<" "<<arr[i];
         }
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+    return 0;
+	}
+          
+
+
+3.insertion sort--------------------------------------------------------------------------------------------------------------------------------------------------
+=>
+
+
 	
 	
 	
