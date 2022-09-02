@@ -93,7 +93,8 @@ int main(){
 
 
 2. Optimised Bubble sort--------------------------------------------------------------------------------------------------------------------------------
-=>repeatedly swap two adjacent elements if they are in wrong order  
+=>repeatedly swap two adjacent elements if they are in wrong order
+=>Sorting started from back side. First element should be sorted lastly.  
 -------------------------------------------------------------------------IN JAVA----------------------------------------------------------------------- 
 import java.util.Scanner;
 public class bubble {
@@ -135,7 +136,7 @@ public class bubble {
 	
  -------------------------------------------------------------------------IN C++-----------------------------------------------------------------------------------
 	
-	#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main(){
