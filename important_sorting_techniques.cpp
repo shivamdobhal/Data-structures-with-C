@@ -222,6 +222,88 @@ int main(){
 ->divide and conquer sorting algorithm
 ->space complexity=0(n) {due to use of extra array}
 -----------------------------------------------------------------------------------c++ code-------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+#define n 50
+
+void conquer(int arr[],int si,int mid,int ei)
+{                        //si=starting index   ei=ending index
+ int l=si;
+ int c=mid+1;
+ int result[n];
+int index=si;
+while(l<=mid && c<=ei)                          //check that  if any of the two array is exhaust or not
+{
+    if(arr[l]>arr[c])
+    {
+        result[index]=arr[c];
+        index++;c++;
+    }
+    else
+    {
+        result[index]=arr[l];
+        index++;l++;
+    }
+}
+
+if(l>mid)                                    //if we reach here it means either  of one of the array is exhausted
+{
+    while(c<=ei)                              //copying the remaining elements of right array
+    {
+        result[index]=arr[c];
+        index++;c++;
+    }
+}
+else
+{
+     while(l<=mid)                       //copying the remaining elements of left array
+    {
+        result[index]=arr[l];
+        index++;l++;
+    }
+}
+   
+  for(int i=si;i<=ei;i++)           //just copying the sorted elements from temporary array to original array
+  {
+    arr[i]=result[i];            
+ 
+  }  
+}
+   
+
+
+
+void divide(int arr[],int si,int ei)
+{
+    if(ei>si)
+    {
+        int mid;
+        mid=si+(ei-si)/2;                        //better approach for finding mid
+        divide(arr,si,mid);       
+        divide(arr,mid+1,ei);                    //callback hell in javascript concept used
+        conquer(arr,si,mid,ei);                //callback hell in javascript concept used
+    }                                          //divide and conquer works simultaneously
+}
+
+
+ 
+int main(){
+    int size;
+    cout<<"please enter the size of the unsorted list :";
+    cin>>size;
+      int arr[n],l=0,r=size-1;
+    for(int i=0;i<size;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"Sorted list : ";
+    divide(arr,l,r);
+     for(int i=0;i<size;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
 
 	
 	
