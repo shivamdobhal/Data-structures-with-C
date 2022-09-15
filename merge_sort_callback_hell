@@ -1,0 +1,29 @@
+=>Callback Hell is just nested callbacks stacked below one another forming a pyramid structure. Every callback depends/waits for the
+  previous callback, thereby making a pyramid structure that affects the readability and maintainability of the code. 
+  
+  
+   arr[6]={40,30,20,10,60,70};
+            0  1  2  3  4  5
+            
+       merge(arr,0,5)
+       {
+          merge(arr,0,2)
+          {
+              merge(arr,0,1)
+              {
+                 merge(arr,0,0)            //condition false that ei>si
+                 {
+                      merge(arr,0,0)
+                      merge(arr,0,0,0)                
+                  }                //this block will gets destroyed after this
+                  merge(arr,0,1)
+                  merge(arr,0,1,1)
+               }                   //destroyed
+               merge(arr,1,2)
+               merge(arr,0,1,2)
+          }                         //destroyed
+          merge(arr,3,5)
+          merge(arr,0,3,5)
+       }           //destroyed 
+       
+        // same will run for the right part
