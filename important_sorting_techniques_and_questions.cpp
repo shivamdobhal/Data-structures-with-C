@@ -312,7 +312,7 @@ int main(){
 
 
 
-4.QUICK SORT--------------------------------------------------------------------------------------------------------------------------------------------------------- 
+5.QUICK SORT--------------------------------------------------------------------------------------------------------------------------------------------------------- 
 ->divide and conquer sorting algorithm
 ->space complexity=0(1) {due to use of no extra array}
 ->average time complexity=o(nlogn)
@@ -400,11 +400,29 @@ return 0;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-QUESTION=what is  the case when worst time complexity of quick sort is o(n*n) i.e n square ?             [IMPORTANT]
+QUESTION=1.what is  the case when worst time complexity of quick sort is o(n*n) i.e n square ?             [IMPORTANT]
 SOLUTION->	This case arises when we select pivot at extreme ends of sorted or reversely sorted array.
 	         
 	                    10  20  30  40  50  60
 	                     0   1   2   3   4   5
                   it gives worst time complextity when pivot = arr[0]  or pivot = arr[5]
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+QUESTION-2]difference bwn quick sort and merge sort ?
+SOLUTION-                        
+	                               quick sort                                                               merge sort	  
 
+                            *space complexity=n(1)                                                     *  space complexity=O(n)  
+	                     no extra space required i.e,inplace algo.                                    extra space required i.e,outplace algo.
+   
+                            *worst time complexity=o(n*n)                                              * worst time complexity=o(nlogn)   
+                            
+                            *use of partitioning.                                                      *no use of partitioning & we find mid in this algo
+ 
+                            *faster for small datasets                                                 *consistant as time complexity is equals in all cases
+  
+                            *unstable algo.                                                            *stable algo
+ 
+                            *good locality of reference                                                 *poor locality of reference
+ 
+ 
