@@ -315,10 +315,96 @@ int main(){
 4.QUICK SORT--------------------------------------------------------------------------------------------------------------------------------------------------------- 
 ->divide and conquer sorting algorithm
 ->space complexity=0(1) {due to use of no extra array}
+->average time complexity=o(nlogn)
+	
 -----------------------------------------------------------------------------------c++ code-------------------------------------------------------------------------
 	
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void quicksort(int arr[],int ,int);     //function declaration
+int partition(int arr[],int ,int);      //function declaration
+
+
+
+void quicksort(int arr[],int l,int r)    //works recursively to sort the array  &  time complexity = o(log n) as array is dividing into 2 parts
+{
+	if(l<r)                       //condition satisfies till r is greater than  l
+	{
+  	        int par=partition(arr,l,r); 
+		quicksort(arr,l,par-1);            //for left part of the pivot element
+		quicksort(arr,par+1,r);            //for left part of the pivot element
+	}
+}
+
+
+//partitioning is the root part of this algorithm in which we find that->  1.the elements which are lesser than pivot is moved to its left 
+//                                                                        2.the elements which are greater than pivot is moved to its right                   
+int partition(int arr[],int si,int ei)             
+{
+int l=si,pivot=l,r=ei;
+    while(l!=r)                                                  //stops the loop when left is equals to right
+    {
+		while(arr[r]>=arr[pivot]  && pivot!=r)             //for right part 
+        	r--;
+       if(arr[r]<arr[pivot])                                   // swapping pivot with right element
+        { 
+          int temp;
+          temp=arr[pivot];
+          arr[pivot]=arr[r];
+          arr[r]=temp;
+        }
+
+
+                while(arr[l]<arr[pivot] && pivot!=l)           //for left part
+                l++;
+
+       if(arr[l]>arr[pivot])                                  // swapping  pivot with left element
+       { 
+         int temp;
+         temp=arr[pivot];
+         arr[pivot]=arr[l];
+         arr[l]=temp;
+       }
+  }
+
+return pivot;
+}
+
+
+int main()
+{
+int size;
+cout<<"enter the size of the array : ";
+cin>>size;
+int arr[size];
+cout<<"enter the elements : ";     
+  	for(int i=0;i<size;i++)                      //inputting array values 
+	{
+		cin>>arr[i];
+	}
+
+int si=0,ei=size-1;
+
+quicksort(arr,si,ei);                             //function call
+	for(int i=0;i<size;i++)                   //printing sorted array
+	{
+		cout<<" "<<arr[i];
+	}
+return 0;
+}	
 	
 	
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+QUESTION=what is  the case when worst time complexity of quick sort is o(n*n) i.e n square ?             [IMPORTANT]
+SOLUTION->	This case arises when we select pivot at extreme ends of sorted or reversely sorted array.
+	         
+	                    10  20  30  40  50  60
+	                     0   1   2   3   4   5
+                  it gives worst time complextity when pivot = arr[0]  or pivot = arr[5]
 
 
